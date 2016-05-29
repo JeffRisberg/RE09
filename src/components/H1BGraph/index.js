@@ -11,12 +11,17 @@ class H1BGraph extends Component {
         super();
 
         this.state = {
-            rawData: []
+            rawData: [],
+            dataFilter: () => true
         };
     }
 
     componentWillMount() {
         this.loadRawData();
+    }
+
+    updateDataFilter(filter) {
+        this.setState({dataFilter: filter});
     }
 
     cleanJobs(title) {
@@ -101,12 +106,15 @@ class H1BGraph extends Component {
             },
             fullWidth = 700;
 
+        let filteredData = this.state.rawData
+            .filter(this.state.dataFilter);
+
         return (
             <div>
                 <svg width={fullWidth} height={params.height}>
-                    <Histogram {...params} data={this.state.rawData}/>
+                    <Histogram {...params} data={filteredData} />
                 </svg>
-                <Controls data={this.state.rawData} updateDataFilter={() => true} />
+                <Controls data={this.state.rawData} updateDataFilter={this.updateDataFilter.bind(this)} />
             </div>
         );
     }
