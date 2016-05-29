@@ -12,6 +12,9 @@ class Controls extends Component {
             USstateFilter: () => true,
             USstate: '*'
         };
+
+        this.updateYearFilter = this.updateYearFilter.bind(this);
+        this.updateUSStateFilter = this.updateUSStateFilter.bind(this);
     }
 
     componentDidUpdate() {
@@ -60,10 +63,10 @@ class Controls extends Component {
             <div>
                 <ControlRow data={this.props.data}
                             getToggleNames={getYears}
-                            updateDataFilter={this.updateYearFilter.bind(this)}/>
+                            updateDataFilter={this.updateYearFilter}/>
                 <ControlRow data={this.props.data}
                             getToggleNames={getUSStates}
-                            updateDataFilter={this.updateUSStateFilter.bind(this)}
+                            updateDataFilter={this.updateUSStateFilter}
                             capitalize="true" />
             </div> )
     }
