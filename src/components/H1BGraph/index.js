@@ -3,6 +3,7 @@ import d3 from 'd3';
 
 import Histogram from '../Histogram';
 import Controls from '../Controls';
+import { Title, Description } from './Meta';
 
 require('./style.less');
 
@@ -111,6 +112,8 @@ class H1BGraph extends Component {
 
         return (
             <div>
+                <Title data={filteredData} />
+                <Description data={filteredData} allData={this.state.rawData} />
                 <svg width={fullWidth} height={params.height}>
                     <Histogram {...params} data={filteredData} />
                 </svg>

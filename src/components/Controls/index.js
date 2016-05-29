@@ -9,13 +9,15 @@ class Controls extends Component {
         this.state = {
             yearFilter: () => true,
             year: '*',
+            USstateFilter: () => true,
+            USstate: '*'
         };
     }
 
     componentDidUpdate() {
         this.props.updateDataFilter(
             ((filters) => {
-                return (d) =>  filters.yearFilter(d);
+                return (d) =>  filters.yearFilter(d) && filters.USstateFilter(d);
             })(this.state)
         );
     }
@@ -35,6 +37,16 @@ class Controls extends Component {
         this.setState({yearFilter: filter, year: year});
     }
 
+    updateUSStateFilter(USstate, reset) {
+        var filter = (d) => d.state == USstate;
+
+        if (reset || !USstate) {
+            filter = () => true;
+            USstate = '*';
+        }
+        this.setState({USstateFilter: filter, USstate: USstate});
+    }
+
     render() {
         let getYears = (data) => {
             return _.keys(_.groupBy(data,
@@ -42,11 +54,17 @@ class Controls extends Component {
                 .map(Number);
         }
 
+        let getUSStates = (data) => _.sortBy(_.keys(_.groupBy(data, (d) => d.state)));
+
         return (
             <div>
                 <ControlRow data={this.props.data}
                             getToggleNames={getYears}
                             updateDataFilter={this.updateYearFilter.bind(this)}/>
+                <ControlRow data={this.props.data}
+                            getToggleNames={getUSStates}
+                            updateDataFilter={this.updateUSStateFilter.bind(this)}
+                            capitalize="true" />
             </div> )
     }
 }
