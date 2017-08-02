@@ -22,18 +22,18 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   module: {
     loaders: [
       {
         test: /\.js|\.jsx$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.less$/,
-        loader: "style!css!less"
+        loader: "style-loader!css-loader!less-loader"
       }
     ]
   }

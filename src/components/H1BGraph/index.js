@@ -58,7 +58,7 @@ class H1BGraph extends Component {
     }
 
     loadRawData() {
-        let dateFormat = d3.time.format("%m/%d/%Y");
+        let dateFormat = d3.timeFormat("%m/%d/%Y");
 
         d3.csv(this.props.url)
             .row((d) => {
