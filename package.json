@@ -29,7 +29,7 @@
     "react-transform"
   ],
   "devDependencies": {
-    "babel-core": "^6.25.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-preset-es2015": "^6.24.1",
@@ -41,8 +41,8 @@
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-react": "^7.1.0",
     "eventsource-polyfill": "^0.9.6",
-    "express": "^4.15.3",
-    "rimraf": "^2.6.1",
+    "express": "^4.16.4",
+    "rimraf": "^2.6.2",
     "webpack": "^3.4.1",
     "webpack-dev-middleware": "^1.10.2",
     "webpack-hot-middleware": "^2.18.0"
@@ -53,7 +53,7 @@
     "d3-time-format": "^2.0.5",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.11",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "style-loader": "^0.18.2"
